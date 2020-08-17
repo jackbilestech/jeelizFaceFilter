@@ -12,7 +12,7 @@ to balance between performance and quality
 */ 
 "use strict";
 
-const superThat = (function(){
+export const superThat = (function(){
   // private vars:
   let _domCanvas = null,
       _whCanvasPx = null,

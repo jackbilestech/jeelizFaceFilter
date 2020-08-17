@@ -10,7 +10,7 @@ It does not handle the 3D aspect (no matrix stories)
 
 */
 
-const JeelizFaceCut = (function(){
+export const JeelizFaceCut = (function(){
 
   // settings:
   const FACECUTSETTINGS = {
@@ -402,11 +402,3 @@ const JeelizFaceCut = (function(){
   }; //end superThat
   return superThat;
 })();
-
-
-// Export ES6 module:
-try {
-  module.exports = JeelizFaceCut;
-} catch(e){
-  console.log('JeelizFaceCut ES6 Module not exported');
-}

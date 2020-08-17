@@ -12,7 +12,7 @@ to balance between performance and quality
 */ 
 "use strict";
 
-const superThat = (function(){
+export const superThat = (function(){
   // private vars:
   let _domCanvas = null,
       _whCanvasPx = null,
@@ -320,9 +320,4 @@ const superThat = (function(){
 })();
 
 // Export ES6 module:
-try {
-  module.exports = superThat;
-} catch(e){
-  console.log('JeelizResizer ES6 Module not exported');
-  window.JeelizResizer = superThat;
-}
+export const JeelizResizer = superThat;

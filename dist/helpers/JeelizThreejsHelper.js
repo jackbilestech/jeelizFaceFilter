@@ -2,7 +2,7 @@
   Helper for Three.js
 */
 
-const superThat = (function(){
+export const JeelizThreejsHelper = (function(){
   // internal settings:
   const _settings = {
     rotationOffsetX: 0.0, // negative -> look upper. in radians
@@ -438,5 +438,3 @@ const superThat = (function(){
   }
   return that;
 })();
-
-export const JeelizThreeHelper = superThat;

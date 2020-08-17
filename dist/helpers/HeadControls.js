@@ -20,7 +20,7 @@
 
 */
 
-var HeadControls = (function(){
+export const HeadControls = (function(){
   const _defaultSettings = {
     detectionThreshold: 0.85, // sensibility, between 0 and 1. Less -> more sensitive
     detectionHysteresis: 0.05,
@@ -246,10 +246,3 @@ var HeadControls = (function(){
   }; //end that
   return that;
 })();
-
-// Export ES6 module:
-try {
-  module.exports = HeadControls;
-} catch(e){
-  console.log('HeadControls ES6 Module not exported');
-}

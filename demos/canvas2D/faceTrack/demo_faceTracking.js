@@ -3,7 +3,7 @@ function main(){
 
   JEEFACEFILTERAPI.init({
     canvasId: 'jeeFaceFilterCanvas',
-    NNCpath: '../../../dist/', // root of NNC.json file
+    NNCpath: '../../../dist/workers/', // root of NNC.json file
     callbackReady: function(errCode, spec){
       if (errCode){
         console.log('AN ERROR HAPPENS. SORRY BRO :( . ERR =', errCode);
@@ -11,7 +11,7 @@ function main(){
       }
 
       console.log('INFO: JEEFACEFILTERAPI IS READY');
-      CVD = JeelizCanvas2DHelper(spec);
+      CVD = facefilter.Helpers.JeelizCanvas2DHelper(spec);
       CVD.ctx.strokeStyle = 'yellow';
     },
 

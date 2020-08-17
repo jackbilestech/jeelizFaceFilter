@@ -203,7 +203,13 @@ Here we describe how to use this library. Although we planned to add new feature
 On your HTML page, you first need to include the main script between the tags `<head>` and `</head>`:
 
 ```html
- <script src="dist/jeelizFaceFilter.js"></script>
+ <script src="path/to/facefilter/library/facefilter-web.js"></script>
+```
+
+Alternativley, you can load into the node module using either the `import` or `require` methods:
+
+```js
+import facefilter, {Helpers} from 'facefilter'
 ```
 
 Then you should include a `<canvas>` HTML element in the DOM, between the tags `<body>` and `</body>`. The `width` and `height` properties of the `<canvas>` element should be set. They define the resolution of the canvas and the final rendering will be computed using this resolution. Be careful to not enlarge too much the canvas size using its CSS properties without increasing its resolution, otherwise it may look blurry or pixelated. We advise to fix the resolution to the actual canvas size. Do not forget to call `JEEFACEFILTERAPI.resize()` if you resize the canvas after the initialization step. We strongly encourage you to use our helper `/helpers/JeelizResizer.js` to set the width and height of the canvas (see [Optimization/Canvas and video resolutions](#optimization) section).
@@ -214,7 +220,7 @@ Then you should include a `<canvas>` HTML element in the DOM, between the tags `
 
 This canvas will be used by WebGL both for the computation and the 3D rendering. When your page is loaded you should launch this function:
 ```javascript
-JEEFACEFILTERAPI.init({
+facefilter.init({
   canvasId: 'jeeFaceFilterCanvas',
   NNCpath: '../../../dist/', //path to JSON neural network model (NNC.json by default)
   callbackReady: function(errCode, spec){
@@ -357,12 +363,15 @@ After the initialization (ie after that `callbackReady` is launched ) , these me
 #### Canvas and video resolutions
 
 We strongly recommend the use of the `JeelizResizer` helper in order to size the canvas to the display size in order to not compute more pixels than required. This helper also computes the best camera resolution, which is the closer to the canvas actual size. If the camera resolution is too high compared to the canvas resolution, your application will be unnecessarily slowed because it is quite costly to refresh the WebGL texture for each video frame. And if the video resolution is too low compared to the canvas resolution, the image will be blurry. You can take a look at the THREE.js boilerplate to see how it is used. To use the helper, you first need to include it in the HTML code:
-```
+
+```html
 <script src="https://appstatic.jeeliz.com/faceFilter/JeelizResizer.js"></script>
 ```
+
 Then in your main script, before initializing Jeeliz FaceFilter, you should call it to size the canvas to the best resolution and to find the optimal video resolution:
-```
-JeelizResizer.size_canvas({
+
+```js
+facefilter.Helpers.JeelizResizer.size_canvas({
   canvasId: 'jeeFaceFilterCanvas',
     callback: function(isError, bestVideoSettings){
       JEEFACEFILTERAPI.init({
@@ -373,6 +382,7 @@ JeelizResizer.size_canvas({
     }
 });
 ```
+
 Take a look at the source code of this helper (in [helpers/JeelizResize.js](helpers/JeelizResize.js)) to get more information.
 
 #### Misc
