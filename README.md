@@ -220,7 +220,7 @@ Then you should include a `<canvas>` HTML element in the DOM, between the tags `
 
 This canvas will be used by WebGL both for the computation and the 3D rendering. When your page is loaded you should launch this function:
 ```javascript
-facefilter.init({
+JEEFACEFILTERAPI.init({
   canvasId: 'jeeFaceFilterCanvas',
   NNCpath: '../../../dist/', //path to JSON neural network model (NNC.json by default)
   callbackReady: function(errCode, spec){
